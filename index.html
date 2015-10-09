@@ -7,25 +7,439 @@
 <link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
 <style>
   body { margin:0; padding:0; }
-  #map { position:absolute; top:50; bottom:50; width:100%; }
+  #map { position:absolute; top:50; bottom:0; width:100%; }
 </style>
 </head>
-<body>
-
-<h1>Travel Map</h1>
-
+<body bgcolor="e3cfcf">
+	
+	<h3>WIP Travel Map</h> 
+		
 <div id='map'></div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoicmFtYXMiLCJhIjoiUFdJckNoOCJ9.LGJOlhJCLddj5fk5da6ZjQ';
-var map = L.mapbox.map('map', 'mapbox.streets')
-    .addControl(L.mapbox.geocoderControl('mapbox.places'));
+
+var southWest = L.latLng(40.712, -74.227),
+    northEast = L.latLng(40.774, -74.125),
+    bounds = L.latLngBounds(southWest, northEast);
+
+	var map = L.mapbox.map('map','ramas.126dfc76', {
+		maxZoom: 19
+	}).addControl(L.mapbox.geocoderControl('mapbox.places'));
+	
+	map.setView([35, 12], 4);
 
 var myLayer = L.mapbox.featureLayer().addTo(map);
+myLayer.loadURL('https://gist.githubusercontent.com/shvrm/bf776339197e89516009/raw/394f0beea9e7a5336799f95bff72ad2dbdf30667/travel.geojson');
+
+var myLayer2 = L.mapbox.featureLayer().addTo(map);
+myLayer2.loadURL('https://gist.githubusercontent.com/shvrm/e65c227ed93100d94311/raw/abf0ceb378acecdb21461dc9d2609cf5635ee5e5/tags.geojson');
 	
-var geojson={"type":"FeatureCollection","features":[{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airpot","name":"Incheon International Airport"},"geometry":{"type":"Point","coordinates":[126.44405364990234,37.464231079937925]},"bbox":[126.44405364990234,37.464231079937925,126.44405364990234,37.464231079937925]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Lapngan Terbang Sultan Abdul Aziz Shah"},"geometry":{"type":"Point","coordinates":[101.54903411865234,3.1306603521118914]},"bbox":[101.54903411865234,3.1306603521118914,101.54903411865234,3.1306603521118914]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Changi International Airport"},"geometry":{"type":"Point","coordinates":[103.98739814758301,1.3547969821645598]},"bbox":[103.98739814758301,1.3547969821645598,103.98739814758301,1.3547969821645598]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport"},"geometry":{"type":"Point","coordinates":[105.88614463806152,21.041328326148044]},"bbox":[105.88614463806152,21.041328326148044,105.88614463806152,21.041328326148044]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Bangkok International Airport"},"geometry":{"type":"Point","coordinates":[100.75166702270506,13.694525189265297]},"bbox":[100.75166702270506,13.694525189265297,100.75166702270506,13.694525189265297]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport"},"geometry":{"type":"Point","coordinates":[55.370750427246094,25.24997490761319]},"bbox":[55.370750427246094,25.24997490761319,55.370750427246094,25.24997490761319]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Aeroport International Leopold-Sedar-Senghor"},"geometry":{"type":"Point","coordinates":[-17.492380142211914,14.744007022029136]},"bbox":[-17.492380142211914,14.744007022029136,-17.492380142211914,14.744007022029136]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Durban International Airport"},"geometry":{"type":"Point","coordinates":[30.947284698486328,-29.966980996394323]},"bbox":[30.947284698486328,-29.966980996394323,30.947284698486328,-29.966980996394323]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"London Hethrow"},"geometry":{"type":"Point","coordinates":[-0.45318603515624994,51.47277620211981]},"bbox":[-0.45318603515624994,51.47277620211981,-0.45318603515624994,51.47277620211981]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Pristina International Airport"},"geometry":{"type":"Point","coordinates":[21.02834701538086,42.5739418016264]},"bbox":[21.02834701538086,42.5739418016264,21.02834701538086,42.5739418016264]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Zurich International Airport"},"geometry":{"type":"Point","coordinates":[8.560066223144531,47.455138947016195]},"bbox":[8.560066223144531,47.455138947016195,8.560066223144531,47.455138947016195]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Chhatrapati Shivaji International Airport"},"geometry":{"type":"Point","coordinates":[72.86493301391602,19.08669668354715]},"bbox":[72.86493301391602,19.08669668354715,72.86493301391602,19.08669668354715]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport"},"geometry":{"type":"Point","coordinates":[54.65406417846679,24.439882787971314]},"bbox":[54.65406417846679,24.439882787971314,54.65406417846679,24.439882787971314]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Aeropuerto Internacional Luiz Munoz Marin"},"geometry":{"type":"Point","coordinates":[-66.00427150726318,18.4388610353276]},"bbox":[-66.00427150726318,18.4388610353276,-66.00427150726318,18.4388610353276]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport"},"geometry":{"type":"Point","coordinates":[113.93457412719727,22.31522236092335]},"bbox":[113.93457412719727,22.31522236092335,113.93457412719727,22.31522236092335]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","name":"Rajiv Gandhi International Airport","tag":"airport"},"geometry":{"type":"Point","coordinates":[78.4293794631958,17.23807967534208]},"bbox":[78.4293794631958,17.23807967534208,78.4293794631958,17.23807967534208]},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"Johannesburg International Airport"},"geometry":{"type":"Point","coordinates":[28.239498138427734,-26.138949868807728]}},{"type":"Feature","properties":{"marker-color":"#7e7e7e","marker-size":"medium","marker-symbol":"","tag":"airport","name":"La Auora"},"geometry":{"type":"Point","coordinates":[-90.53009033203125,14.589896330494557]}}]};
+// var geojson={
+//   "type": "FeatureCollection",
+//   "features": [
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Incheon International Airport, South Korea"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           126.44405364990234,
+//           37.464231079937925
+//         ]
+//       },
+//       "bbox": [
+//         126.44405364990234,
+//         37.464231079937925,
+//         126.44405364990234,
+//         37.464231079937925
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Lapngan Terbang Sultan Abdul Aziz Shah"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           101.54903411865234,
+//           3.1306603521118914
+//         ]
+//       },
+//       "bbox": [
+//         101.54903411865234,
+//         3.1306603521118914,
+//         101.54903411865234,
+//         3.1306603521118914
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Changi International Airport, Singapore"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           103.98739814758301,
+//           1.3547969821645598
+//         ]
+//       },
+//       "bbox": [
+//         103.98739814758301,
+//         1.3547969821645598,
+//         103.98739814758301,
+//         1.3547969821645598
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           105.88614463806152,
+//           21.041328326148044
+//         ]
+//       },
+//       "bbox": [
+//         105.88614463806152,
+//         21.041328326148044,
+//         105.88614463806152,
+//         21.041328326148044
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Bangkok International Airport, Thailand"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           100.75166702270506,
+//           13.694525189265297
+//         ]
+//       },
+//       "bbox": [
+//         100.75166702270506,
+//         13.694525189265297,
+//         100.75166702270506,
+//         13.694525189265297
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           55.370750427246094,
+//           25.24997490761319
+//         ]
+//       },
+//       "bbox": [
+//         55.370750427246094,
+//         25.24997490761319,
+//         55.370750427246094,
+//         25.24997490761319
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Aeroport International Leopold-Sedar-Senghor, Senegal"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           -17.492380142211914,
+//           14.744007022029136
+//         ]
+//       },
+//       "bbox": [
+//         -17.492380142211914,
+//         14.744007022029136,
+//         -17.492380142211914,
+//         14.744007022029136
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Durban International Airport, South Africa"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           30.947284698486328,
+//           -29.966980996394323
+//         ]
+//       },
+//       "bbox": [
+//         30.947284698486328,
+//         -29.966980996394323,
+//         30.947284698486328,
+//         -29.966980996394323
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "London Hethrow, United Kingdom"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           -0.45318603515624994,
+//           51.47277620211981
+//         ]
+//       },
+//       "bbox": [
+//         -0.45318603515624994,
+//         51.47277620211981,
+//         -0.45318603515624994,
+//         51.47277620211981
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Pristina International Airport, Albania"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           21.02834701538086,
+//           42.5739418016264
+//         ]
+//       },
+//       "bbox": [
+//         21.02834701538086,
+//         42.5739418016264,
+//         21.02834701538086,
+//         42.5739418016264
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Zurich International Airport, Switzerland"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           8.560066223144531,
+//           47.455138947016195
+//         ]
+//       },
+//       "bbox": [
+//         8.560066223144531,
+//         47.455138947016195,
+//         8.560066223144531,
+//         47.455138947016195
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Chhatrapati Shivaji International Airport, Mumbai"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           72.86493301391602,
+//           19.08669668354715
+//         ]
+//       },
+//       "bbox": [
+//         72.86493301391602,
+//         19.08669668354715,
+//         72.86493301391602,
+//         19.08669668354715
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           54.65406417846679,
+//           24.439882787971314
+//         ]
+//       },
+//       "bbox": [
+//         54.65406417846679,
+//         24.439882787971314,
+//         54.65406417846679,
+//         24.439882787971314
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Aeropuerto Internacional Luiz Munoz Marin"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           -66.00427150726318,
+//           18.4388610353276
+//         ]
+//       },
+//       "bbox": [
+//         -66.00427150726318,
+//         18.4388610353276,
+//         -66.00427150726318,
+//         18.4388610353276
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           113.93457412719727,
+//           22.31522236092335
+//         ]
+//       },
+//       "bbox": [
+//         113.93457412719727,
+//         22.31522236092335,
+//         113.93457412719727,
+//         22.31522236092335
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "name": "Rajiv Gandhi International Airport, Hyderabad",
+//         "tag": "airport"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           78.4293794631958,
+//           17.23807967534208
+//         ]
+//       },
+//       "bbox": [
+//         78.4293794631958,
+//         17.23807967534208,
+//         78.4293794631958,
+//         17.23807967534208
+//       ]
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "Johannesburg International Airport, South Africa"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           28.239498138427734,
+//           -26.138949868807728
+//         ]
+//       }
+//     },
+//     {
+//       "type": "Feature",
+//       "properties": {
+//         "marker-color": "#7e7e7e",
+//         "marker-size": "medium",
+//         "marker-symbol": "",
+//         "tag": "airport",
+//         "name": "La Auora"
+//       },
+//       "geometry": {
+//         "type": "Point",
+//         "coordinates": [
+//           -90.53009033203125,
+//           14.589896330494557
+//         ]
+//       }
+//     }
+//   ]
+// }
 
 var icon = {
-          "iconUrl": "http://www.iconsdb.com/icons/download/orange/airport-512.png",
+          "iconUrl": "http://4vector.com/i/free-vector-vintage-flight-aircraft-vector_013925_025_transport/Flight_Vintage_Aircraft/Flight_Vintage_Aircraft.png",
           "iconSize": [50, 50], // size of the icon
           "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
           "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
@@ -38,16 +452,58 @@ var icon = {
 	    marker.setIcon(L.icon(icon));
 	    var content = '<div class=name>'+ feature.properties.name+'</div>';
 	    marker.bindPopup(content);
-	  });	  
+	  });
+	  
+	  var tagMap = {
+		  'beach': 'http://icons.iconarchive.com/icons/dapino/beach/256/sun-umbrella-icon.png',
+		  'ferry': 'http://www.iconarchive.com/download/i2472/aha-soft/transport/sailing-ship.ico',
+		  'golf': 'http://www.the-flag-makers.com/wp-content/uploads/2014/03/icon-golf.png',
+		  'park': 'http://vignette1.wikia.nocookie.net/farmville/images/5/51/Sunny_Park-icon.png/revision/latest?cb=20131013162225',
+		  'theatre': 'http://www.iconarchive.com/download/i17945/icons-land/points-of-interest/Theater-Yellow-2.ico',
+		  'diving': 'http://iconizer.net/files/Impressions/orig/diver.png',
+		  'food': 'http://140cpn.com/wp-content/uploads/2015/06/A_Fine_Dining.png',
+		  'wildlife': 'http://allresourceupdates.files.wordpress.com/2013/06/giraffe.png',
+		  'climbing': 'http://crec.unl.edu/images/Icons/OA%20Mountain%201%20Red.png',
+		  'port': 'https://cdn1.iconfinder.com/data/icons/objects-4/98/Anchor-2-512.png',
+		  'tourism': 'http://zizaza.com/cache/icon_256/iconset/582230/582237/PNG/512/tourism/pin_travel_flat_tourism_icon_png_pin_png_pin_icon.png',
+		  'fishing': 'http://vignette3.wikia.nocookie.net/clubpenguin/images/3/34/Clothing_Icons_5421.png/revision/latest?cb=20140221155929',
+		  'shark': 'https://d30y9cdsu7xlg0.cloudfront.net/png/7417-200.png',
+		  'zoo': 'https://cdn0.iconfinder.com/data/icons/animal-icons-flat/128/parrot-512.png',
+		  'croc': 'https://cdn0.iconfinder.com/data/icons/danger-signs/512/crocodile_danger_warning-512.png'
+	  }
+	  
+	  myLayer2.on('layeradd', function(e) {
+	    var marker = e.layer,
+	      feature = marker.feature;
+		  var iconurl = geticonurl(marker.feature.properties.tag,tagMap);
+		  var myicon = {
+          "iconUrl": iconurl,
+          "iconSize": [40, 40], // size of the icon
+          "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+          "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+          "className": "dot"
+      }
+	    marker.setIcon(L.icon(myicon));
+	    var content = '<div class=name>'+ feature.properties.name+'</div>';
+	    marker.bindPopup(content);
+	  });  
 
-myLayer.setGeoJSON(geojson);
+	  function geticonurl(tagname,tagmap){
+		  if(tagmap.hasOwnProperty(tagname)){
+		  	return tagmap[tagname]
+		  } else {
+		  	return 'http://4vector.com/i/free-vector-vintage-flight-aircraft-vector_013925_025_transport/Flight_Vintage_Aircraft/Flight_Vintage_Aircraft.png'
+		  }
+	  }
+
+// myLayer.setGeoJSON(geojson);
 
 </script>
 
 <style>
 .name {
-	color: red;
-	font-family: "Times New Roman";
+	color: black;
+	font-family: "Menlo";
 }
 </style>
 

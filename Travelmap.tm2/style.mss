@@ -7,7 +7,7 @@
 @sans_bold: 'HolmenOT RegularItalic';
 
 // Common Colors //
-@land: #e6dabb;
+@land: #f2f2db;
 @water: #92c7dd;
 
 Map { background-color: @land; }
@@ -16,7 +16,7 @@ Map { background-color: @land; }
 
 #admin[admin_level=2][maritime=0] {
   line-join: round;
-  line-color: #b7abab;
+  line-color: #977d84;
   line-width: 1.4;
   [zoom>=6] { line-width: 2; }
   [zoom>=8] { line-width: 4; }
@@ -50,7 +50,7 @@ Map { background-color: @land; }
   [type='city'][zoom<=15] {
     text-name: @name;
     text-face-name: @sans_bold;
-    text-fill: #444;
+    text-fill: #970013;
     text-size: 16;
     [zoom>=10] { text-size: 18; }
     [zoom>=12] { text-size: 24; }
@@ -58,7 +58,7 @@ Map { background-color: @land; }
   [type='town'][zoom<=17] {
     text-name: @name;
     text-face-name: @sans;
-    text-fill: #333;
+    text-fill: #6a4300;
     text-size: 14;
     [zoom>=10] { text-size: 16; }
     [zoom>=12] { text-size: 20; }
@@ -66,7 +66,7 @@ Map { background-color: @land; }
   [type='village'] {
     text-name: @name;
     text-face-name: @sans;
-    text-fill: #444;
+    text-fill: #238101;
     text-size: 12;
     [zoom>=12] { text-size: 14; }
     [zoom>=14] { text-size: 18; }
@@ -76,7 +76,7 @@ Map { background-color: @land; }
   [type='neighbourhood'] {
     text-name: @name;
     text-face-name: @sans;
-    text-fill: #666;
+    text-fill: #050505;
     text-size: 12;
     [zoom>=14] { text-size: 14; }
     [zoom>=16] { text-size: 16; }
@@ -130,7 +130,7 @@ Map { background-color: @land; }
 #tunnel,
 #bridge {
   ['mapnik::geometry_type'=2] {
-    line-color: #cde;
+    line-color: #717171;
     line-width: 0.5;
     [class='motorway'],
     [class='main'] {

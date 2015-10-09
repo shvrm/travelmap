@@ -1,5 +1,6 @@
 _prefs: 
-  saveCenter: true
+  mapid: ramas.126dfc76
+  saveCenter: false
 _properties: 
   bridge: 
     "group-by": layer
@@ -10,19 +11,20 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - 70.4883
-  - 22.7964
-  - 4
+  - -23.5547
+  - 25.006
+  - 2
 description: ''
 format: "png8:m=h"
 interactivity_layer: ''
 layers: null
-maxzoom: 22
+maxzoom: 18
 minzoom: 0
 name: ''
 source: "mapbox:///mapbox.mapbox-streets-v5"
 styles: 
   - style.mss
   - water.mss
-  - airports.mss
+  - park.mss
+  - desert.mss
 template: ''
